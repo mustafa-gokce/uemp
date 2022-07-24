@@ -8,9 +8,8 @@ int main(int argc, char **argv) {
     while (true) {
         zmq_sleep(1);
         const std::string payload = "{\"count\":" + std::to_string(counter) + "}";
-        const std::string_view message = payload;
-        sock.send(zmq::buffer(message), zmq::send_flags::dontwait);
-        std::cout << "sent: " << message << "\n";
+        sock.send(zmq::buffer(payload), zmq::send_flags::dontwait);
+        std::cout << "sent: " << payload << "\n";
         counter++;
     }
     return 0;

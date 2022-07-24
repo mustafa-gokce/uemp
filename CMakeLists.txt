@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16.3 FATAL_ERROR)
 
 project(UEMP CXX)
-
-find_package(cppzmq)
 
 add_executable(
         UEMPC
@@ -17,5 +15,5 @@ add_executable(
 find_package(cppzmq)
 target_link_libraries(UEMPC cppzmq)
 target_link_libraries(UEMPS cppzmq)
-target_compile_features(UEMPS PRIVATE cxx_std_17)
-target_compile_features(UEMPC PRIVATE cxx_std_17)
+target_compile_features(UEMPS PRIVATE cxx_std_11)
+target_compile_features(UEMPC PRIVATE cxx_std_11)
