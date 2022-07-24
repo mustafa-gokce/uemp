@@ -12,8 +12,9 @@ add_executable(
         UEMPS.cpp
 )
 
-find_package(cppzmq)
-target_link_libraries(UEMPC cppzmq)
-target_link_libraries(UEMPS cppzmq)
+find_package(cppzmq REQUIRED)
+find_package(msgpack REQUIRED)
+target_link_libraries(UEMPC cppzmq msgpackc)
+target_link_libraries(UEMPS cppzmq msgpackc)
 target_compile_features(UEMPS PRIVATE cxx_std_11)
 target_compile_features(UEMPC PRIVATE cxx_std_11)
