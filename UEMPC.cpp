@@ -24,11 +24,11 @@ int main(int argc, char **argv) {
         msgpack::unpack(result, sbuf.str().data(), sbuf.str().size(), off);
         result.get().convert(msg);
 
-        if (msg.id.id == MSG_ID::MSG_ID_USER) {
+        if (msg.id == MSG_ID::MSG_ID_USER) {
             MSG_USER msg_user;
             msg.data.convert(msg_user);
             std::cout << " [client] " << counter << " " << unsigned(msg_user.id) << " " << msg_user.name << " " << unsigned(msg_user.level) << "\n";
-        } else if (msg.id.id == MSG_ID::MSG_ID_NPC) {
+        } else if (msg.id == MSG_ID::MSG_ID_NPC) {
             MSG_NPC msg_npc;
             msg.data.convert(msg_npc);
             std::cout << " [client] " << counter << " " << unsigned(msg_npc.id) << " " << msg_npc.name << " " << unsigned(msg_npc.health) << " " << unsigned(msg_npc.strength) << "\n";

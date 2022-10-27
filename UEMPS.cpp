@@ -17,11 +17,11 @@ int main(int argc, char **argv) {
 
         if (counter % 2 == 0) {
             MSG_USER msg_user = MSG_USER{9, "warrior", 26};
-            msg = MSG{msg_id_t{MSG_ID::MSG_ID_USER}, msgpack::object(msg_user, z)};
+            msg = MSG{MSG_ID::MSG_ID_USER, msgpack::object(msg_user, z)};
             std::cout << " [server] " << counter <<  " warrior \n";
         } else {
             MSG_NPC msg_npc = MSG_NPC{200, "salesman", 98, 100};
-            msg = MSG{msg_id_t{MSG_ID::MSG_ID_NPC}, msgpack::object(msg_npc, z)};
+            msg = MSG{MSG_ID::MSG_ID_NPC, msgpack::object(msg_npc, z)};
             std::cout << " [server] " << counter <<  " salesman \n";
         }
 
