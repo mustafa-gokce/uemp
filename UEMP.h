@@ -11,11 +11,13 @@ enum class MSG_ID : uint16_t {
     MSG_ID_NPC = 2,
 };
 
+MSGPACK_ADD_ENUM(MSG_ID)
+
 class MSG {
 public:
     MSG_ID id{MSG_ID::MSG_ID_NONE};
     msgpack::object data{};
-    MSGPACK_DEFINE((uint16_t&)id, data);
+    MSGPACK_DEFINE(id, data);
 };
 
 class MSG_USER {
