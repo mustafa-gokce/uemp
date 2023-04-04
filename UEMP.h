@@ -3,7 +3,6 @@
 #include <iostream>
 #include <zmq.hpp>
 #include <msgpack.hpp>
-#include <boost/filesystem.hpp>
 
 enum class MSG_ID : uint16_t {
     MSG_ID_NONE = 0,
@@ -16,8 +15,8 @@ MSGPACK_ADD_ENUM(MSG_ID)
 class MSG {
 public:
     MSG_ID id{MSG_ID::MSG_ID_NONE};
-    msgpack::object data{};
-    MSGPACK_DEFINE(id, data);
+    msgpack::object msg{};
+    MSGPACK_DEFINE(id, msg);
 };
 
 class MSG_USER {

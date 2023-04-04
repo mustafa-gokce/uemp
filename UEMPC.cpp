@@ -26,11 +26,11 @@ int main(int argc, char **argv) {
 
         if (msg.id == MSG_ID::MSG_ID_USER) {
             MSG_USER msg_user;
-            msg.data.convert(msg_user);
+            msg.msg.convert(msg_user);
             std::cout << " [client] " << counter << " " << unsigned(msg_user.id) << " " << msg_user.name << " " << unsigned(msg_user.level) << "\n";
         } else if (msg.id == MSG_ID::MSG_ID_NPC) {
             MSG_NPC msg_npc;
-            msg.data.convert(msg_npc);
+            msg.msg.convert(msg_npc);
             std::cout << " [client] " << counter << " " << unsigned(msg_npc.id) << " " << msg_npc.name << " " << unsigned(msg_npc.health) << " " << unsigned(msg_npc.strength) << "\n";
         }
 
