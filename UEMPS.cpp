@@ -16,12 +16,12 @@ int main(int argc, char **argv) {
         MSG msg;
 
         if (counter % 2 == 0) {
-            MSG_USER msg_user = MSG_USER{9, "warrior", 26};
-            msg = MSG{MSG_ID::MSG_ID_USER, msgpack::object(msg_user, z)};
+            STATE_PLAYER state_player = STATE_PLAYER{9, "warrior", 26};
+            msg = MSG{MSG_ID::STATE_PLAYER, msgpack::object(state_player, z)};
             std::cout << " [server] " << counter <<  " warrior \n";
         } else {
-            MSG_NPC msg_npc = MSG_NPC{200, "salesman", 98, 100};
-            msg = MSG{MSG_ID::MSG_ID_NPC, msgpack::object(msg_npc, z)};
+            STATE_NPC state_npc = STATE_NPC{200, "salesman", 98, 100};
+            msg = MSG{MSG_ID::STATE_NPC, msgpack::object(state_npc, z)};
             std::cout << " [server] " << counter <<  " salesman \n";
         }
 

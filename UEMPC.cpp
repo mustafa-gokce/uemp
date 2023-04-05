@@ -25,14 +25,14 @@ int main(int argc, char **argv) {
         result.get().convert(msg);
 
         try {
-            if (msg.id == MSG_ID::MSG_ID_USER) {
-                MSG_USER msg_user;
-                msg.msg.convert(msg_user);
-                std::cout << " [client] " << counter << " " << unsigned(msg_user.id) << " " << msg_user.name << " " << unsigned(msg_user.level) << "\n";
-            } else if (msg.id == MSG_ID::MSG_ID_NPC) {
-                MSG_NPC msg_npc;
-                msg.msg.convert(msg_npc);
-                std::cout << " [client] " << counter << " " << unsigned(msg_npc.id) << " " << msg_npc.name << " " << unsigned(msg_npc.health) << " " << unsigned(msg_npc.strength) << "\n";
+            if (msg.id == MSG_ID::STATE_PLAYER) {
+                STATE_PLAYER state_player;
+                msg.msg.convert(state_player);
+                std::cout << " [client] " << counter << " " << unsigned(state_player.id) << " " << state_player.name << " " << unsigned(state_player.level) << "\n";
+            } else if (msg.id == MSG_ID::STATE_NPC) {
+                STATE_NPC state_npc;
+                msg.msg.convert(state_npc);
+                std::cout << " [client] " << counter << " " << unsigned(state_npc.id) << " " << state_npc.name << " " << unsigned(state_npc.health) << " " << unsigned(state_npc.strength) << "\n";
             }
         } catch (const std::exception &e) {
             std::cout << " [client] " << counter << " " << e.what() << "\n";

@@ -5,21 +5,21 @@
 #include <msgpack.hpp>
 
 enum class MSG_ID : uint16_t {
-    MSG_ID_NONE = 0,
-    MSG_ID_USER = 1,
-    MSG_ID_NPC = 2,
+    NONE = 0,
+    STATE_PLAYER = 1,
+    STATE_NPC = 2,
 };
 
 MSGPACK_ADD_ENUM(MSG_ID)
 
 class MSG {
 public:
-    MSG_ID id{MSG_ID::MSG_ID_NONE};
+    MSG_ID id{MSG_ID::NONE};
     msgpack::object msg{};
     MSGPACK_DEFINE(id, msg);
 };
 
-class MSG_USER {
+class STATE_PLAYER {
 public:
     uint16_t id{};
     std::string name{};
@@ -27,7 +27,7 @@ public:
     MSGPACK_DEFINE (id, name, level);
 };
 
-class MSG_NPC {
+class STATE_NPC {
 public:
     uint16_t id{};
     std::string name{};

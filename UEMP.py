@@ -2,7 +2,6 @@ import enum
 
 
 class MSG_ID(enum.IntEnum):
-    BAD = -1
     NONE = 0
     STATE_PLAYER = 1
     STATE_NPC = 2
