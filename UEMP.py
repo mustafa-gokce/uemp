@@ -2,81 +2,82 @@ import enum
 
 
 class MSG_ID(enum.IntEnum):
-    MSG_ID_NONE = 0
-    MSG_ID_USER = 1
-    MSG_ID_NPC = 2
+    BAD = -1
+    NONE = 0
+    STATE_PLAYER = 1
+    STATE_NPC = 2
 
 
 class MSG:
-    def __init__(self, msg_id=MSG_ID.MSG_ID_NONE, msg=None):
-        self.msg_id = msg_id
+    def __init__(self, id=MSG_ID.NONE, msg=None):
+        self.id = id
         self.msg = msg
 
     def pack(self):
-        return [self.msg_id, self.msg.pack()]
+        return [self.id, self.msg.pack()]
 
     def unpack(self, data):
-        self.msg_id = MSG_ID(data[0])
-        if self.msg_id == MSG_ID.MSG_ID_NONE:
+        self.id = MSG_ID(data[0])
+        if self.id == MSG_ID.NONE:
             self.msg = None
-        elif self.msg_id == MSG_ID.MSG_ID_USER:
-            self.msg = MSG_USER()
-        elif self.msg_id == MSG_ID.MSG_ID_NPC:
-            self.msg = MSG_NPC()
+        elif self.id == MSG_ID.STATE_PLAYER:
+            self.msg = STATE_PLAYER()
+        elif self.id == MSG_ID.STATE_NPC:
+            self.msg = STATE_NPC()
         self.msg.unpack(data[1])
 
     def __dict__(self):
-        return {"msg_id": self.msg_id,
+        return {"id": self.id,
                 "msg": self.msg.__dict__()}
 
     def __str__(self):
         return str(self.__dict__())
 
 
-class MSG_USER:
-    def __init__(self, usr_id=0, usr_name="", usr_health=0):
-        self.usr_id = usr_id
-        self.usr_name = usr_name
-        self.usr_health = usr_health
+class STATE_PLAYER:
+    def __init__(self, id=0, name="", health=0):
+        self.id = id
+        self.name = name
+        self.health = health
 
     def pack(self):
-        return [self.usr_id, self.usr_name, self.usr_health]
+        return [self.id, self.name, self.health]
 
     def unpack(self, data):
-        self.usr_id = data[0]
-        self.usr_name = data[1]
-        self.usr_health = data[2]
+        self.id = data[0]
+        self.name = data[1]
+        self.health = data[2]
 
     def __dict__(self):
-        return {"usr_id": self.usr_id,
-                "usr_name": self.usr_name,
-                "usr_health": self.usr_health}
+        return {"id": self.id,
+                "name": self.name,
+                "health": self.health}
 
     def __str__(self):
         return str(self.__dict__())
 
 
-class MSG_NPC:
-    def __init__(self, npc_id=0, npc_name="", npc_health=0, npc_strength=0):
-        self.npc_id = npc_id
-        self.npc_name = npc_name
-        self.npc_health = npc_health
-        self.npc_strength = npc_strength
+class STATE_NPC:
+    def __init__(self, id=0, name="", health=0, strength=0):
+        self.id = id
+        self.name = name
+        self.health = health
+        self.strength = strength
 
     def pack(self):
-        return [self.npc_id, self.npc_name, self.npc_health, self.npc_strength]
+        return [self.id, self.name, self.health, self.strength]
 
     def unpack(self, data):
-        self.npc_id = data[0]
-        self.npc_name = data[1]
-        self.npc_health = data[2]
-        self.npc_strength = data[3]
+        self.id = data[0]
+        self.name = data[1]
+        self.health = data[2]
+        self.strength = data[3]
 
     def __dict__(self):
-        return {"npc_id": self.npc_id,
-                "npc_name": self.npc_name,
-                "npc_health": self.npc_health,
-                "npc_strength": self.npc_strength}
+        return {"id": self.id,
+                "name": self.name,
+                "health": self.health,
+                "strength": self.strength}
 
     def __str__(self):
         return str(self.__dict__())

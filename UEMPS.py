@@ -21,13 +21,13 @@ while True:
     if i % 2 == 0:
 
         # create a message object
-        message = UEMP.MSG(UEMP.MSG_ID.MSG_ID_USER, UEMP.MSG_USER(9, "mustaphos", 26))
+        message = UEMP.MSG(UEMP.MSG_ID.STATE_PLAYER, UEMP.STATE_PLAYER(9, "mustaphos", 26))
 
     # create npc message
     else:
 
         # create a message object
-        message = UEMP.MSG(UEMP.MSG_ID.MSG_ID_NPC, UEMP.MSG_NPC(13, "depocu", 26, 10))
+        message = UEMP.MSG(UEMP.MSG_ID.STATE_NPC, UEMP.STATE_NPC(13, "depocu", 26, 10))
 
     # print the message
     print(i, message)
